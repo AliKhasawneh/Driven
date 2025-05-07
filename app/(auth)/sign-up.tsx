@@ -6,10 +6,30 @@ import {
   Platform,
   KeyboardAvoidingView,
 } from "react-native";
-import { images } from "@/constants";
+import { icons, images } from "@/constants";
 import SignUpForm from "@/app/(auth)/sign-up-form";
+import { useSignUp } from "@clerk/clerk-expo";
+import { useState } from "react";
+import { ReactNativeModal } from "react-native-modal";
+import CustomButton from "@/components/CustomButton";
+import { router } from "expo-router";
+import InputField from "@/components/InputField";
 
 const SignUp = () => {
+  const { isLoaded, signUp, setActive } = useSignUp();
+
+  const [form, setForm] = useState({
+    name: "",
+    email: "",
+    password: "",
+  });
+
+  const [verification, setVerification] = useState({
+    state: "default",
+    error: "",
+    code: "",
+  });
+
   return (
     <KeyboardAvoidingView
       behavior={Platform.OS === "ios" ? "padding" : "height"}

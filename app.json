@@ -21,24 +21,22 @@
     },
     "web": {
       "bundler": "metro",
-      "output": "static",
+      "output": "server",
       "favicon": "./assets/images/favicon.png"
     },
     "splash": {
       "image": "./assets/images/splash.png"
     },
     "plugins": [
-      "expo-router",
-      [
-        "expo-splash-screen",
-        {
-          "image": "./assets/images/splash.png",
-          "imageWidth": 200,
-          "resizeMode": "contain",
-          "backgroundColor": "red"
-        }
-      ]
+      ["expo-router", { "origin": "https://ridealong.com/" }],
+      ["expo-splash-screen", {
+        "image": "./assets/images/splash.png",
+        "imageWidth": 200,
+        "resizeMode": "contain",
+        "backgroundColor": "red"
+      }]
     ],
+
     "experiments": {
       "typedRoutes": true
     }
